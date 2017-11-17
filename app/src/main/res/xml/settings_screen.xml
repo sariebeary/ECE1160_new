@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="Phone Unlock"
+        android:key="phone_unlock"
+        android:summary="Unlock"
+        />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="Allow Hints"
+        android:key="allow_hints"
+        android:summary="Gives hint for the box"
+        />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:title="Multi. Auth."
+        android:key="multi_auth"
+        />
+
+    <ListPreference
+        android:entries="@array/time_lists"
+        android:entryValues="@array/time_lists"
+        android:summary="%s"
+        android:title="Timeout"
+        android:key="timeout"
+        />
+
+</PreferenceScreen>

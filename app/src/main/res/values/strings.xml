@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">LOCK</string>
+    <string name="action_settings">Settings</string>
+    
+    <string-array name="time_lists">
+        <item>15 Seconds</item>
+        <item>30 Seconds</item>
+        <item>45 Seconds</item>
+        <item>1 Minute</item>
+        <item>2 Minutes</item>
+        <item>3 Minutes</item>
+        <item>5 Minutes</item>
+    </string-array>
+</resources>
