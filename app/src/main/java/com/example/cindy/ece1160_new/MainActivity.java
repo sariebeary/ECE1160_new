@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(enableBtIntent);
                         //bluetoothAdapter.enable();
                 } else {
-                        bluetoothAdapter.disable();
+                    bluetoothAdapter.disable();
 
                 }
             }
