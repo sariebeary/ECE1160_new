@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -46,6 +47,8 @@ public class Main2Activity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_screen);
         }
+
+        Preference allowHint = (Preference) findPreference("allow_hints");
     }
 
 

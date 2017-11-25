@@ -1,16 +1,23 @@
 package com.example.cindy.ece1160_new;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+    BluetoothAdapter bluetoothAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +26,29 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Bluetooth
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) {
+            Log.d(TAG,"Does not have BT capabilities");
+            //Device does not support Bluetooth
+        }
+
+        //Toggle button to turn Bluetooth on and off
+        ToggleButton toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
+
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                        startActivity(enableBtIntent);
+                        //bluetoothAdapter.enable();
+                } else {
+                        bluetoothAdapter.disable();
+
+                }
+            }
+        });
 
         //Click on password hint there will be a pop-up message
         Button passwordHintBtn = (Button) findViewById(R.id.passwordHintBtn);
