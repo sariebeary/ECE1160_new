@@ -1,7 +1,11 @@
 package com.example.cindy.ece1160_new;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -90,8 +95,11 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent myIntent = new Intent(MainActivity.this, Main2Activity.class);
-                startActivity(myIntent);
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                SignInDialogFragment fire = new SignInDialogFragment();
+                fire.show(fragmentManager, "dialog");
+//                Intent myIntent = new Intent(MainActivity.this, Main2Activity.class);
+//                startActivity(myIntent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -103,6 +111,31 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Boolean data = sharedPreferences.getBoolean(key, value);
         return data;
+    }
+
+    public static class SignInDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater li = LayoutInflater.from(getActivity());
+            View prompt = li.inflate(R.layout.dialog_signin, null);
+            builder.setView(prompt);
+
+            builder.setPositiveButton("Enter",  new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent myIntent = new Intent(getActivity(), Main2Activity.class);
+                            startActivity(myIntent);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
     }
 }
 
