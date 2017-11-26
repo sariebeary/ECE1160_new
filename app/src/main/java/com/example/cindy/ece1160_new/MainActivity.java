@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         passwordHintBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Hint: 123456789", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Hint: straight and down will turn this lock upside down ", Toast.LENGTH_SHORT).show();
             }
         });
     }
