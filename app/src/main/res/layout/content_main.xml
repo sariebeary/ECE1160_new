@@ -19,27 +19,27 @@
         android:textSize="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:id="@+id/textView" />
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
+    <Button
+        android:id="@+id/unlockbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="196dp"
-        android:checked="true"
-        android:elegantTextHeight="true"
-        android:textOff="UnLock"
-        android:textOn="Lock" />
+        android:text="Unlock"
+        android:layout_marginTop="142dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/passwordHintBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/toggleButton"
+        android:layout_alignTop="@+id/unlockbutton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
         android:text="Password Hint" />
+
+
 
 </RelativeLayout>
