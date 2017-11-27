@@ -21,7 +21,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        //fragements
+        //fragments
         Fragment fragment = new SettingsScreen();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         if (savedInstanceState == null) {
@@ -51,8 +51,10 @@ public class Main2Activity extends AppCompatActivity {
         public void onResume() {
             super.onResume();
             SwitchPreference allowHint = (SwitchPreference) findPreference("allow_hints");
+            SwitchPreference multiauth = (SwitchPreference) findPreference("phone_unlock"); //phone_unlock multi_auth
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
             boolean isChecked = sharedPreferences.getBoolean("allow_hint", false);
+            boolean isChecked2 = sharedPreferences.getBoolean("phone_unlock", false);
         }
     }
 
